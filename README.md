@@ -1,3 +1,5 @@
+![AI File Organizer Logo](https://libinpg.github.io/logo.png)
+
 # 自动文件整理系统
 
 这个项目利用 OpenAI API 自动地对文件进行分类和整理。基于文件内容，它将文件移动到相应的分类文件夹中，使文件管理更加高效和有序。
