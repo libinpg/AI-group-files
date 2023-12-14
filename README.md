@@ -37,7 +37,7 @@
 
 1. 运行主脚本并指定要整理的目录：
    ```bash
-   python src/main.py yourfilepath
+   python src/main.py your_file_directory_path
    ```
 2. 查看输出以确认文件分类和整理结果。
 
