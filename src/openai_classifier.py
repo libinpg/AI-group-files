@@ -1,6 +1,8 @@
 import openai
 import json
 import os
+import re
+import time
 
 def load_config(config_file='./config/config.json'):
     """
@@ -16,7 +18,7 @@ def load_config(config_file='./config/config.json'):
 
 def classify_content(content, config_file='./config/config.json'):
     """
-    Classify the given content using OpenAI's GPT-3.5 API with the latest chat completion method.
+    Classify the given content using OpenAI's GPT-3.5 API with rate limit handling.
     """
     try:
         with open(config_file, 'r') as file:
@@ -29,14 +31,27 @@ def classify_content(content, config_file='./config/config.json'):
 
         openai.api_key = openai_api_key
 
-        completion = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # or other appropriate model
-            messages=[
-                {"role": "system", "content": "You are an assistant who classifies files based on their content."},
-                {"role": "user", "content": content}
-            ]
-        )
-        return completion.choices[0].message['content']
+        prompt = f"Classify this content and suggest a short, valid folder name:\nContent: {content}\nFolder Name:"
+        for attempt in range(3):  # Retry up to 3 times
+            try:
+                completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": prompt}
+                    ]
+                )
+                folder_name = completion.choices[0].message['content']
+                break  # Break the loop if successful
+            except openai.error.RateLimitError:
+                if attempt < 2:  # Wait only if more attempts are left
+                    time.sleep(20)  # Wait for 20 seconds before retrying
+                else:
+                    raise  # Raise the exception if out of attempts
+
+        folder_name = re.sub(r'[^\w\s-]', '', folder_name).strip()
+        folder_name = folder_name[:15].rstrip()
+        return folder_name
+
     except Exception as e:
         print(f"Error in calling OpenAI API: {e}")
         return None
