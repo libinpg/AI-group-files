@@ -35,9 +35,9 @@
 
 ## 使用
 
-1. 运行主脚本并指定要整理的文件：
+1. 运行主脚本并指定要整理的目录：
    ```bash
-   python main.py path/to/your/file.txt
+   python src/main.py yourfilepath
    ```
 2. 查看输出以确认文件分类和整理结果。
 
