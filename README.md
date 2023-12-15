@@ -30,10 +30,14 @@
 1. 在 `config.json` 文件中填入您的 OpenAI API 密钥或百度千帆平台ChatGLM2_6B_32K API密钥，至少填写一个模型：
    ```json
    {
-     "openai_api_key": "YOUR_API_KEY",
-     "api_key": "ChatGLM2_6B_32K_api_key",
-     "secret_key": "ChatGLM2_6B_32K_secret_key"
-   }
+     "openai": {
+          "openai_api_key": "your_openai_api_key"
+     },
+     "baidu_qianfan": {
+         "api_key": "your_api_key",
+         "api_secret": "your_api_secret"
+     }
+ }
    ```
 2. 确保不要公开您的 API 密钥，尤其是在公共代码库中。
 
