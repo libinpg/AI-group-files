@@ -1,5 +1,6 @@
 import json
 import requests
+
 def load_config(config_file='config\config.json'):
     """
     Load the configuration for both OpenAI and Baidu models.
