@@ -14,7 +14,7 @@
 
 1. 克隆此仓库到您的本地机器：
    ```bash
-   git clone https://github.com/your-username/AI-group-files.git
+   git clone https://github.com/libinpg/AI-group-files.git
 
 2. 进入项目目录：
    ```bash
@@ -39,11 +39,15 @@
 
 ## 使用
 
-1. 运行主脚本并指定要整理的目录：
+1. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录：
    ```bash
-   python src/main.py your_file_directory_path
+   python src/main.py your_file_directory_path --classifier glm
    ```
-2. 查看输出以确认文件分类和整理结果。
+2. 调用openai gpt-3.5模型进行文件整理并指定要整理的目录：
+   ```bash
+   python src/main.py your_file_directory_path --classifier openai
+   ```
+4. 查看输出以确认文件分类和整理结果。
 
 ## ToDo
 
