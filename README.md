@@ -47,15 +47,15 @@
    ```bash
    python src/main.py your_file_directory_path --classifier openai
    ```
-2. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录：
-   ```bash
-   python src/main.py your_file_directory_path --classifier glm
-   ```
-3. 调用Llama-2-7b-chat模型进行文件整理并指定要整理的目录：
+2. 调用Llama-2-7b-chat模型进行文件整理并指定要整理的目录：
    ```bash
    python src/main.py your_file_directory_path --classifier llama
    ```
-3. 查看输出以确认文件分类和整理结果。
+3. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录：
+   ```bash
+   python src/main.py your_file_directory_path --classifier glm
+   ```
+4. 查看输出以确认文件分类和整理结果。
 
 ## Model Benchmark
 gpt3.5
