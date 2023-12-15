@@ -1,30 +1,15 @@
 import openai
-import json
-import os
 import re
 import time
+from utils import load_config
 
-def load_config(config_file='./config/config.json'):
-    """
-    从配置文件加载 OpenAI API 密钥。
-    """
-    if not os.path.exists(config_file):
-        print(f"配置文件 {config_file} 不存在。")
-        return None
-
-    with open(config_file, 'r') as file:
-        config = json.load(file)
-    return config.get('openai_api_key', '')
 
 def classify_content(content, config_file='./config/config.json'):
     """
     Classify the given content using OpenAI's GPT-3.5 API with rate limit handling.
     """
     try:
-        with open(config_file, 'r') as file:
-            config = json.load(file)
-        openai_api_key = config.get('openai_api_key')
-
+        openai_api_key, baidu_api_key, baidu_api_secret = load_config(config_file)
         if not openai_api_key:
             print("API key not found. Please check the configuration file.")
             return None
