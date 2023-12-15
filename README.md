@@ -57,6 +57,11 @@
    ```
 3. 查看输出以确认文件分类和整理结果。
 
+## Model Benchmark
+gpt3.5
+llama
+chatglm_6B_32k
+
 ## ToDo
 
 1. 用国内大模型接口降低成本(已适配百度千帆ChatGLM2_6B_32K api,Llama-2-7b-chat api)。
