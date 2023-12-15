@@ -30,7 +30,9 @@
 1. 在 `config.json` 文件中填入您的 OpenAI API 密钥：
    ```json
    {
-     "openai_api_key": "YOUR_API_KEY"
+     "openai_api_key": "YOUR_API_KEY",
+     "api_key": "ChatGLM2_6B_32K_api_key",
+     "secret_key": "ChatGLM2_6B_32K_secret_key"
    }
    ```
 2. 确保不要公开您的 API 密钥，尤其是在公共代码库中。
@@ -63,4 +65,4 @@
 
 ## 联系方式
 
-如有问题或需要帮助，请通过以下方式联系我：[Email](mailto:1790572759@qq.com)
+如有问题或需要帮助，请通过以下方式联系我：[Email](mailto:libinpg@qq.com)
