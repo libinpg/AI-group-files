@@ -1,13 +1,13 @@
 import requests
 import json
 import re
-from utils import load_config
+from utils import load_config,get_baiduqianfan_access_token
 
 def classify_content(content, config_file='config\config.json'):
     """
     Classify the given content using the ChatGLM2_6B_32K model with a structured response format.
     """
-    access_token = get_access_token()
+    access_token = get_baiduqianfan_access_token()
 
     prompt = f"You are a file organizing assistant. Based on this content, suggest a concise, valid folder name. this is content: '{content}'. Please format the response like {{folder_name}}, which means that your response should be enclosed within single braces"
     try:
@@ -42,19 +42,6 @@ def send_request(content, access_token):
     })
     headers = {'Content-Type': 'application/json'}
     return requests.request("POST", url, headers=headers, data=payload)
-
-def get_access_token():
-    """
-    Generate the authentication signature (Access Token) using API_KEY and SECRET_KEY.
-    """
-    url = "https://aip.baidubce.com/oauth/2.0/token"
-    openai_api_key, baidu_api_key, baidu_api_secret = load_config()
-    if not baidu_api_key or not baidu_api_secret:
-        print("API key or Secret key not found. Please check the configuration file.")
-        return None
-    params = {"grant_type": "client_credentials", "client_id": baidu_api_key, "client_secret": baidu_api_secret}
-    response = requests.post(url, params=params).json()
-    return response.get("access_token")
 
 def parse_response(response):
     """
