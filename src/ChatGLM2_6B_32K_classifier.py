@@ -1,28 +1,18 @@
 import requests
 import json
 import re
-def load_config(config_file='./config/config.json'):
-    """
-    Load API_KEY and SECRET_KEY from the configuration file.
-    """
-    try:
-        with open(config_file, 'r') as file:
-            config = json.load(file)
-        return config.get('api_key'), config.get('secret_key')
-    except Exception as e:
-        print(f"Error loading configuration: {e}")
-        return None, None
+from utils import load_config,get_baiduqianfan_access_token
 
 def classify_content(content, config_file='./config/config.json'):
     """
     Classify the given content using the ChatGLM2_6B_32K model with a structured response format.
     """
-    API_KEY, SECRET_KEY = load_config(config_file)
-    if not API_KEY or not SECRET_KEY:
+    openai_api_key, baidu_api_key, baidu_api_secret = load_config(config_file)
+    if not baidu_api_key or not baidu_api_secret:
         print("API key or Secret key not found. Please check the configuration file.")
         return None
 
-    access_token = get_access_token()
+    access_token = get_baiduqianfan_access_token()
 
     prompt = f"You are a file organizing assistant. Based on this content, suggest a concise, valid folder name. this is content: '{content}'. Please format the response like {{folder_name}}, which means that your response should be enclosed within single braces"
     try:
@@ -57,16 +47,6 @@ def send_request(content, access_token):
     })
     headers = {'Content-Type': 'application/json'}
     return requests.request("POST", url, headers=headers, data=payload)
-
-def get_access_token():
-    """
-    Generate the authentication signature (Access Token) using API_KEY and SECRET_KEY.
-    """
-    url = "https://aip.baidubce.com/oauth/2.0/token"
-    API_KEY, SECRET_KEY = load_config()
-    params = {"grant_type": "client_credentials", "client_id": API_KEY, "client_secret": SECRET_KEY}
-    response = requests.post(url, params=params).json()
-    return response.get("access_token")
 
 def parse_response(response):
     """
