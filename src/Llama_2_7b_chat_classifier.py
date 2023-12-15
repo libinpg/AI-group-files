@@ -2,6 +2,7 @@ import requests
 import json
 import re
 from utils import load_config,get_baiduqianfan_access_token
+from prompts import CLASSIFICATION_PROMPT
 
 def classify_content(content, config_file='config\config.json'):
     """
@@ -9,11 +10,11 @@ def classify_content(content, config_file='config\config.json'):
     """
     access_token = get_baiduqianfan_access_token()
 
-    prompt = f"You are a file organizing assistant. Based on this content, suggest a concise, valid folder name. this is content: '{content}'. Please format the response like {{folder_name}}, which means that your response should be enclosed within single braces"
+    prompt = CLASSIFICATION_PROMPT.format(content)
     try:
         response = send_request(prompt, access_token)
         responseText = parse_response(response)
-        print(f"Response from ChatGLM2_6B_32K: {responseText}")
+        print(f"Response from Llama-7B-chat: {responseText}")
         # Use regex to extract content within {{folder_name}}
         match = re.search(r'\{(.+?)\}', responseText)
         if match:
