@@ -27,7 +27,7 @@
 
 ## 配置
 
-1. 在 `config.json` 文件中填入您的 OpenAI API 密钥或百度千帆平台ChatGLM2_6B_32K API密钥，至少填写一个模型：
+1. 在 `config.json` 文件中填入您的 OpenAI API 密钥或百度千帆平台API密钥，至少填写一个模型：
    ```json
    {
      "openai": {
