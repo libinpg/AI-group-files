@@ -15,7 +15,7 @@ def load_config(config_file='./config/config.json'):
 
 def classify_content(content, config_file='./config/config.json'):
     """
-    Classify the given content using the ChatGLM2_6B_32K model.
+    Classify the given content using the ChatGLM2_6B_32K model with a structured response format.
     """
     API_KEY, SECRET_KEY = load_config(config_file)
     if not API_KEY or not SECRET_KEY:
@@ -23,16 +23,24 @@ def classify_content(content, config_file='./config/config.json'):
         return None
 
     access_token = get_access_token()
-    if not access_token:
-        print("Failed to get access token.")
-        return None
-    prompt = f"Based on this content, suggest a concise, valid name for a folder: '{content}'. Folder Name:"
+
+    prompt = f"You are a file organizing assistant. Based on this content, suggest a concise, valid folder name. this is content: '{content}'. Please format the response like {{folder_name}}, which means that your response should be enclosed within single braces"
     try:
         response = send_request(prompt, access_token)
-        folder_name = parse_response(response)
-        folder_name = re.sub(r'[^\w\s-]', '', folder_name).strip()
-        folder_name = folder_name[:15].rstrip()
-        return folder_name
+        responseText = parse_response(response)
+        print(f"Response from ChatGLM2_6B_32K: {responseText}")
+        # Use regex to extract content within {{folder_name}}
+        match = re.search(r'\{(.+?)\}', responseText)
+        if match:
+            folder_name = match.group(1).strip()
+            # Further sanitize and shorten the folder name if necessary
+            folder_name = re.sub(r'[^\w\s-]', '', folder_name)
+            # folder_name = folder_name[:15].rstrip()
+            return folder_name
+        else:
+            print("No valid folder name format found in the response.")
+            return None
+
     except Exception as e:
         print(f"Error in calling ChatGLM2_6B_32K API: {e}")
         return None
