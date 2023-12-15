@@ -58,17 +58,19 @@
 4. 查看输出以确认文件分类和整理结果。
 
 ## Model Benchmark
-gpt3.5
-llama
-chatglm_6B_32k
+
+1. gpt3.5
+2. llama
+3. chatglm_6B_32k
 
 ## ToDo
 
 1. 用国内大模型接口降低成本(已适配百度千帆ChatGLM2_6B_32K api,Llama-2-7b-chat api)。
-2. 添加不同模型的benchmark
-3. 添加本地模型支持
-4. 编译为可执行程序
-5. 系统可以用学习用户的分类习惯
+2. 更新openai api调用函数
+3. 添加不同模型的benchmark
+4. 添加本地模型支持
+5. 编译为可执行程序
+6. 系统可以用学习用户的分类习惯
 
 
 ## 贡献
