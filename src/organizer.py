@@ -24,7 +24,10 @@ def move_file_to_category_folder(file_path, category):
     target_path = os.path.join(directory_path, file_name)
 
     try:
-        shutil.move(file_path, target_path)
-        print(f"文件 '{file_name}' 已移动到 '{directory_path}'")
+        # shutil.move(file_path, target_path)
+        shutil.copy(file_path, target_path)
+        # print(f"文件 '{file_name}' 已移动到 '{directory_path}'")
+        print(f"文件 '{file_name}' 已复制到 '{directory_path}'")
     except Exception as e:
-        print(f"移动文件时出错: {e}")
+        # print(f"移动文件时出错: {e}")
+        print(f"复制文件时出错: {e}")
