@@ -37,7 +37,7 @@
          "api_key": "your_api_key",
          "api_secret": "your_api_secret"
      }
- }
+   }
    ```
 2. 确保不要公开您的 API 密钥，尤其是在公共代码库中。
 
