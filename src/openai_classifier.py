@@ -2,12 +2,13 @@ import openai
 import re
 import time
 from utils import load_config
-
+from prompts import CLASSIFICATION_PROMPT
 
 def classify_content(content, config_file='./config/config.json'):
     """
     Classify the given content using OpenAI's GPT-3.5 API with rate limit handling.
     """
+    prompt = CLASSIFICATION_PROMPT.format(content)
     try:
         openai_api_key, baidu_api_key, baidu_api_secret = load_config(config_file)
         if not openai_api_key:
@@ -16,7 +17,8 @@ def classify_content(content, config_file='./config/config.json'):
 
         openai.api_key = openai_api_key
 
-        prompt = f"You are a file organizing assistant. Based on this content, suggest a concise, valid folder name. this is content: '{content}'. Please format the response like {{folder_name}}, which means that your response should be enclosed within single braces"
+        prompt = prompt = CLASSIFICATION_PROMPT.format(content)
+        print(f"Prompt sent to OpenAI: {prompt}")
         for attempt in range(3):  # Retry up to 3 times
             try:
                 completion = openai.ChatCompletion.create(
