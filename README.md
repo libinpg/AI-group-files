@@ -1,4 +1,3 @@
-
 <h1 align="center">
   AI-group-files
 </h1>
@@ -96,4 +95,4 @@
 
 ## 联系方式
 
-如有问题或需要帮助，请通过以下方式联系我：[Email](mailto:libinpg@qq.com)
+如有问题或需要帮助，请通过以下方式联系我：[Email](mailto:1790572759@qq.com)
