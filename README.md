@@ -48,17 +48,17 @@
 
 ## 使用
 
-1. 调用openai gpt-3.5模型进行文件整理并指定要整理的目录：
+1. 调用openai gpt-3.5模型进行文件整理并指定待整理的目录和整理后的路径(可选)：
    ```bash
-   python src/main.py your_file_directory_path --classifier openai
+   python src/main.py your_file_directory_path --classifier openai --save_path xxx
    ```
-2. 调用Llama-2-7b-chat模型进行文件整理并指定要整理的目录：
+2. 调用Llama-2-7b-chat模型进行文件整理并指定要整理的目录和整理后的路径(可选)：
    ```bash
-   python src/main.py your_file_directory_path --classifier llama
+   python src/main.py your_file_directory_path --classifier llama --save_path xxx
    ```
-3. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录：
+3. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录和整理后的路径(可选)：
    ```bash
-   python src/main.py your_file_directory_path --classifier glm
+   python src/main.py your_file_directory_path --classifier glm --save_path xxx
    ```
 4. 查看输出以确认文件分类和整理结果。
 
