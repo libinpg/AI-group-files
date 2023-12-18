@@ -8,7 +8,7 @@ def create_directory_if_not_exists(directory_path):
     if not os.path.exists(directory_path):
         os.makedirs(directory_path)
 
-def move_file_to_category_folder(file_path, category):
+def move_file_to_category_folder(file_path, category, save_path):
     """
     将文件移动到其分类标签对应的文件夹。
     """
@@ -16,7 +16,8 @@ def move_file_to_category_folder(file_path, category):
         print("分类标签或文件路径为空，无法整理文件。")
         return
 
-    directory_path = os.path.join("sorted_files", category)
+    # directory_path = os.path.join("sorted_files", category)
+    directory_path = os.path.join(save_path, category)
     create_directory_if_not_exists(directory_path)
 
     # 构建目标文件路径
