@@ -1,5 +1,6 @@
 import json
 import requests
+import os
 
 def load_config(config_file='config\config.json'):
     """
@@ -34,3 +35,8 @@ def get_baiduqianfan_access_token():
     params = {"grant_type": "client_credentials", "client_id": baidu_api_key, "client_secret": baidu_api_secret}
     response = requests.post(url, params=params).json()
     return response.get("access_token")
+
+def get_existing_folders(directory):
+    print(f"Getting existing folders in {directory}")
+    """ 获取给定目录中的所有文件夹名称 """
+    return [name for name in os.listdir(directory) if os.path.isdir(os.path.join(directory, name))]

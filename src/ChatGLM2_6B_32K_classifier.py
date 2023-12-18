@@ -1,10 +1,10 @@
 import requests
 import json
 import re
-from utils import load_config,get_baiduqianfan_access_token
+from utils import load_config, get_baiduqianfan_access_token, get_existing_folders
 from prompts import CLASSIFICATION_PROMPT
 
-def classify_content(content, config_file='./config/config.json'):
+def classify_content(content, save_path ,config_file='./config/config.json'):
     """
     Classify the given content using the ChatGLM2_6B_32K model with a structured response format.
     """
@@ -15,7 +15,10 @@ def classify_content(content, config_file='./config/config.json'):
 
     access_token = get_baiduqianfan_access_token()
 
-    prompt = CLASSIFICATION_PROMPT.format(content)
+    # 将现有文件夹列表作为上下文信息
+    context = "Existing folders(你先需要分析这些文件夹名，看是不是和待分类文件相关，当现存文件夹的列表中有可以直接用的时候，你相当于一个简单的选择程序，选择对应的名字即可，原原本本的保留名字既可,简单说就是以已有的文件名为主): " + str(get_existing_folders(save_path)) + "."
+    print(context)
+    prompt = context + CLASSIFICATION_PROMPT.format(content)
     try:
         response = send_request(prompt, access_token)
         responseText = parse_response(response)

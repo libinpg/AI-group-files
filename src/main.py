@@ -9,7 +9,7 @@ import os
 def process_file(file_path, classifier_func, save_path):
     content = read_file_content(file_path)
     if content:
-        classification = classifier_func(content)
+        classification = classifier_func(content, save_path=save_path)
         if classification:
             move_file_to_category_folder(file_path, classification, save_path)
 
