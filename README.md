@@ -32,7 +32,7 @@
 
 ## 配置
 
-1. 在 `config.json` 文件中填入您的 OpenAI API 密钥或百度千帆平台API密钥，至少填写一个模型：
+1. 在 `config.json` 文件中填入您的 OpenAI API 密钥或百度千帆平台API密钥或阿里dashscope API密钥，至少填写一个模型：
    ```json
    {
      "openai": {
@@ -41,6 +41,9 @@
      "baidu_qianfan": {
          "api_key": "your_api_key",
          "api_secret": "your_api_secret"
+     },
+     "dashscope": {
+        "api_key": "your_api_key"
      }
    }
    ```
@@ -50,27 +53,23 @@
 
 1. 调用openai gpt-3.5模型进行文件整理并指定待整理的目录和整理后的路径(可选)：
    ```bash
-   python src/main.py your_file_directory_path --classifier openai --save_path xxx
+   python src.main.py your_file_directory_path --classifier openai --save_path xxx
    ```
-2. 调用Llama-2-7b-chat模型进行文件整理并指定要整理的目录和整理后的路径(可选)：
+2. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录和整理后的路径(可选)：
    ```bash
-   python src/main.py your_file_directory_path --classifier llama --save_path xxx
-   ```
-3. 调用ChatGLM2_6B_32K模型进行文件整理并指定要整理的目录和整理后的路径(可选)：
-   ```bash
-   python src/main.py your_file_directory_path --classifier glm --save_path xxx
+   python src.main.py your_file_directory_path --classifier glm --save_path xxx
    ```
 4. 查看输出以确认文件分类和整理结果。
 
 ## Model Benchmark
 
 1. gpt3.5
-2. llama
+2. baichuan2_13b
 3. chatglm_6B_32k
 
 ## ToDo
 
-1. 用国内大模型接口降低成本(已适配百度千帆ChatGLM2_6B_32K api,Llama-2-7b-chat api)。
+1. 用国内大模型接口降低成本(已适配百度千帆ChatGLM2_6B_32K api)。
 2. 添加中英文文件名选项
 3. 添加分类结果整合逻辑
 4. 更新openai api调用函数
@@ -81,7 +80,7 @@
 9. 系统可以用学习用户的分类习惯
 
 ## 目标
-1. 本项目达成1k stars
+1. 本项目达成1k stars, 本项目为丰富简历创建
 
 ## 贡献
 

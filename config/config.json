@@ -5,6 +5,9 @@
      "baidu_qianfan": {
          "api_key": "your_baiduqianfan_apikey",
          "api_secret": "your_baiduqianfan_apisecret"
+     },
+     "dashscope": {
+        "api_key": "your_dashscope_api_key"
      }
  }
  
