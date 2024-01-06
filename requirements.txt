@@ -1,3 +1,6 @@
 openai==0.28
 requests
 dashscope
+pillow
+fpdf
+
