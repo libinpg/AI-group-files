@@ -8,6 +8,9 @@
 # 自动文件整理系统
 
 这个项目利用 OpenAI API 及其它大模型API自动地对文件进行分类和整理。基于文件内容，它将文件移动到相应的分类文件夹中，使文件管理更加高效和有序。
+## 原理视频
+
+<iframe src="//player.bilibili.com/player.html?aid=238462513&bvid=BV1he411U7DS&cid=1399153635&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## 功能
 
