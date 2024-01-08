@@ -10,7 +10,7 @@
 这个项目利用 OpenAI API 及其它大模型API自动地对文件进行分类和整理。基于文件内容，它将文件移动到相应的分类文件夹中，使文件管理更加高效和有序。
 ## 原理视频
 
-<iframe src="//player.bilibili.com/player.html?aid=238462513&bvid=BV1he411U7DS&cid=1399153635&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[AI-group-files原理介绍(基于gpts)](https://www.bilibili.com/video/BV1he411U7DS/?share_source=copy_web&vd_source=5c8f1eb177b7669e07cbe6d93dd65f4)
 
 ## 功能
 
