@@ -86,19 +86,6 @@
 8. 编译为可执行程序
 9. 系统可以用学习用户的分类习惯
 
-## 目标
-1. 本项目为丰富简历创建
-
-## 贡献
-
-如果您想为此项目贡献代码或提出改进建议，请联系我的邮箱获取测试apikey, 请遵循以下步骤：
-
-1. Fork 仓库。
-2. 创建新的分支 (`git checkout -b feature-branch`).
-3. 提交您的更改 (`git commit -m 'Add some feature'`).
-4. 推送到分支 (`git push origin feature-branch`).
-5. 创建新的 Pull Request。
-
 ## 许可证
 
 [MIT](https://choosealicense.com/licenses/mit/)
